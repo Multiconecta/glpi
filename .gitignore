@@ -1,3 +1,4 @@
+.htpasswd
 /config/config_db*
 /config/config_path.php
 /config/local_define.php

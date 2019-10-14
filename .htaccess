@@ -23,3 +23,15 @@
 #   ExpiresByType text/javascript "access 1 year"
 #   ExpiresByType application/javascript "access 1 year"
 #</IfModule>
+
+# Limit access to FusionInventory with http password for agent
+# (partial security for the plugin)
+# Must create /.htpasswd with user fusion
+<Location /plugins/fusioninventory>
+	<If "%{HTTP_USER_AGENT} =~ /^FusionInventory-Agent_v/">
+		AuthUserFile /var/www/html/atendimento.multiconecta.com.br-ssl/.htpasswd
+		AuthName "Acesso Privado"
+		AuthType Basic
+		Require user fusion
+	</If>
+</Location>
